@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import VueParticlesBg from "particles-bg-vue";
+import { Icon } from 'element-ui'
 
-Vue.use(VueParticlesBg)
+Vue.use(Icon);
 
 Vue.config.productionTip = false
 
