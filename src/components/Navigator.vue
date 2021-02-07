@@ -1,7 +1,14 @@
 <template>
   <div id="navigator">
     <div class="mypic" ref="backimg"><i class="el-icon-more" ref="select" @click="showMenu"/>{{theme}}</div>
-    <transition>
+    <transition v-bind:css="false"
+                v-on:before-enter="beforeEnter"
+                v-on:enter="enter"
+                v-on:after-enter="afterEnter"
+                v-on:before-leave="beforeLeave"
+                v-on:leave="leave"
+                v-on:after-leave="afterLeave"
+                >
       <ul v-show="showflag">
         <li v-for="(item, index) of line" :key="index" @click="selectBackground(index)" :class="item.background">
           <span><i :class="item.icon" /></span>
@@ -70,6 +77,53 @@ export default {
     },
     showMenu(){
       this.showflag=!this.showflag;
+    },
+    beforeEnter(el){
+      const clientWidth=window.screen.width;
+      const clientHeight=window.screen.height;
+      if(clientWidth<clientHeight&&this.showflag===true){
+        el.style.display="block";
+        el.style.maxHeight=0;
+      }
+    },
+    enter(el,done){
+      el.offsetWidth;
+      el.style.transition="max-height .5s";
+      setTimeout(done,0);
+    },
+    afterEnter(el){
+      const clientWidth=window.screen.width;
+      const clientHeight=window.screen.height;
+      if(clientWidth<clientHeight&&this.showflag===true){
+        el.style.maxHeight=280+'px';
+      }
+    },
+    beforeLeave(el){
+      const clientWidth=window.screen.width;
+      const clientHeight=window.screen.height;
+      if(clientWidth<clientHeight&&this.showflag===false){
+        el.style.maxHeight=280+'px';
+      }
+    },
+    leave(el,done){
+      el.offsetWidth;
+      el.style.transition="max-height .5s";
+      setTimeout(done,0);
+    },
+    afterLeave(el){
+      const clientWidth=window.screen.width;
+      const clientHeight=window.screen.height;
+      if(clientWidth<clientHeight&&this.showflag===false){
+        el.style.display="block"
+        el.style.maxHeight=0;
+      }
+    }
+  },
+  beforeMount() {
+    const clientWidth=window.screen.width;
+    const clientHeight=window.screen.height;
+    if(clientWidth<clientHeight){
+      this.showflag=false;
     }
   },
   mounted(){
