@@ -1,6 +1,10 @@
 <template>
   <div id="navigator">
-    <div class="mypic" ref="backimg"><i class="el-icon-more" ref="select" @click="showMenu"/>{{theme}}</div>
+    <div class="mypic" ref="backimg">
+      <!-- <i class="el-icon-more" ref="select" @click="showMenu"/> -->
+      <i class="el-icon-more" v-show="this.$store.state.showSelect" @click="showMenu"/>
+      {{theme}}
+      </div>
     <transition v-bind:css="false"
                 v-on:before-enter="beforeEnter"
                 v-on:enter="enter"
@@ -10,7 +14,7 @@
                 v-on:after-leave="afterLeave"
                 >
       <ul v-show="showflag">
-        <li v-for="(item, index) of line" :key="index" @click="selectBackground(index)" :class="item.background">
+        <li v-for="(item, index) of line" :key="index" @click="selectBackground(index)" :class="item.background" >
           <span><i :class="item.icon" /></span>
           {{item.content}}
         </li>
@@ -30,37 +34,44 @@ export default {
         {
           content:"首页",
           icon:"el-icon-s-home",
-          background:"white"
+          background:"white",
+          luyou:"/"
         },
         {
           content:"关于",
           icon:"el-icon-user-solid",
-          background:"white"
+          background:"white",
+          luyou:"/"
         },
         {
           content:"标签",
           icon:"el-icon-collection-tag",
-          background:"white"
+          background:"white",
+          luyou:"/"
         },
         {
           content:"分类",
           icon:"el-icon-menu",
-          background:"white"
+          background:"white",
+          luyou:"/"
         },
         {
-          content:"归档",
-          icon:"el-icon-s-promotion",
-          background:"white"
+          content:"登陆",
+          icon:"el-icon-user",
+          background:"white",
+          luyou:"/login"
         },
         {
           content:"图片墙",
           icon:"el-icon-picture",
-          background:"white"
+          background:"white",
+          luyou:"/"
         },
         {
           content:"搜索",
           icon:"el-icon-search",
-          background:"white"
+          background:"white",
+          luyou:"/"
         }
       ]
     }
@@ -74,10 +85,13 @@ export default {
           item.background="white";
         }
       });
+      this.$router.push(this.line[index].luyou);
     },
     showMenu(){
       this.showflag=!this.showflag;
     },
+    // beforeEnter~afterLeave用于菜单栏的收起与展开，目前未解决的问题。1：浏览器打开控制台隐式触发移动端布局方式，菜单栏特效消失。2:移动端横屏，特效消失。
+    // 检查了逻辑代码，没有考虑到多种情况，只考虑到了百分之六十的情况，明日继续
     beforeEnter(el){
       const clientWidth=window.screen.width;
       const clientHeight=window.screen.height;
@@ -126,18 +140,14 @@ export default {
       this.showflag=false;
     }
   },
-  mounted(){
-    const clientWidth=window.screen.width;
-    const clientHeight=window.screen.height;
-    // console.log(clientWidth, clientHeight)
-    if(clientWidth<clientHeight){
-      const height=365*(clientWidth/547)+'px';
-      this.$refs.backimg.style.height=height;
-      this.$refs.backimg.style.lineHeight=height;
-    }else{
-      this.$refs.select.style.display='none';
-    }
-  }
+  // mounted(){
+  //   const clientWidth=window.screen.width;
+  //   const clientHeight=window.screen.height;
+  //   // console.log(clientWidth, clientHeight)
+  //   if(clientWidth>clientHeight){
+  //     this.$refs.select.style.display='none';
+  //   }
+  // }
 }
 </script>
 
@@ -165,23 +175,26 @@ export default {
     background: #F2F6FC;
   }
   .mypic{
-    background: url("../assets/images/logo.jpeg") no-repeat;
+    background: url("../assets/images/logo.png") no-repeat center center white;
+    background-size: contain;
     width: 100%;
     text-align: center;
     font-size: 20px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    color: rgb(14, 7, 2);
+    color:black;
+    text-shadow: black 0.5px 0.5px;
+    border-bottom: 1px solid gray;
+    height: 141px;
+    line-height: 141px;
   }
   @media screen and (orientation: landscape) {
     .mypic{
       background-size: contain;
-      height: 167px;
-      line-height: 167px;
     }
   }
-  @media screen and (orientation: portrait) {
+  @media screen and (orientation: portrait), screen and (max-width: 991px){
     .mypic{
-      background-size: cover;
+      /* background-size: cover; */
       position: relative;
     }
     .mypic>i{
@@ -189,7 +202,7 @@ export default {
       left: 30px;
       top: 50%;
       transform: translateY(-50%);
-      background: #E6A23C;
+      background: wheat;
       padding: 5px;
     }
   }
