@@ -76,7 +76,7 @@ export default {
   }
 }
 
-
+/* pc端布局方式 */
 @media screen and (min-width: 992px){
   .navigate{
     width: 250px;
@@ -84,17 +84,19 @@ export default {
   }
   .main{
     width: 720px;
-    /* background: black; */
+    background: black;
     float: left;
     position: relative;
     left: 20px;
   }
 }
 
-
+/* pc端宽度小于等于991隐式触发移动端布局 */
 @media screen and (max-width: 991px){
-  .navigate{
-    width: 100%;
+  .main{
+    background: black;
+    position: relative;
+    overflow: hidden;
   }
 }
 </style>

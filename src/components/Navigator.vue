@@ -91,8 +91,7 @@ export default {
     showMenu(){
       this.$store.state.showflag=!this.$store.state.showflag;
     },
-    // beforeEnter~afterLeave用于菜单栏的收起与展开，目前未解决的问题。1：浏览器打开控制台隐式触发移动端布局方式，菜单栏特效消失。2:移动端横屏，特效消失。
-    // 检查了逻辑代码，没有考虑到多种情况，只考虑到了百分之六十的情况，明日继续
+    // beforeEnter~afterLeave用于菜单栏的收起与展开
     beforeEnter(el){
       if(this.$store.state.documentWidth<992&&this.$store.state.showflag){
         el.style.display="block";
@@ -165,6 +164,13 @@ export default {
       height: 141px;
       line-height: 141px;
     }
+    .mypic>i{
+      position: fixed;
+      left: 30px;
+      top: 54px;
+      background: wheat;
+      padding: 5px;
+    }
     .mypic>i:hover{
       cursor: pointer;
     }
@@ -175,40 +181,32 @@ export default {
     }
   }
   /* Galaxy Fold 竖屏 280px */
-  @media screen and (max-width:285px){
+
+  /* @media screen and (max-width:285px){
     .mypic{
       width: 90%;
     }
-  }
+  } */
   /* iphone 8p 竖屏 414px */
-  @media screen and (min-width: 286px) and (max-width: 420px){
+  /* @media screen and (min-width: 286px) and (max-width: 420px){
     .mypic{
       width: 70%;
     }
-  }
+  } */
   /* ipad 横屏 768px */
-  @media screen and (min-width: 421px){
+  /* @media screen and (min-width: 421px){
     .mypic{
       width: 30%;
+    }
+  }
+  @media screen and (max-width: 991px){
+    .mypic{
+     
     }
   }
   @media screen and (min-width: 992px){
     .mypic{
       width: 100%;
     }
-  }
-  @media screen and (max-width: 991px){
-    .mypic{
-      /* background-size: cover; */
-      position: relative;
-    }
-    .mypic>i{
-      position: absolute;
-      left: -30px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: wheat;
-      padding: 5px;
-    }
-  }
+  } */
 </style>
