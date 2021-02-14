@@ -44,10 +44,10 @@ export default {
           luyou:"/"
         },
         {
-          content:"标签",
+          content:"发布",
           icon:"el-icon-collection-tag",
           background:"white",
-          luyou:"/"
+          luyou:"/write"
         },
         {
           content:"分类",

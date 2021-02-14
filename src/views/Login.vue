@@ -1,21 +1,75 @@
 <template>
   <div id="login">
     <main>
-      <div>
-        <h1>登陆</h1>
-        <input type="text" id="user"><br>
-        <div id="login_btn">
-          <button id="submit">登陆</button>
-          <button id="reset">重置</button>
+      <transition v-bind:css="false"
+                  v-on:before-enter="beforeEnter"
+                  v-on:enter="enter"
+                  v-on:after-enter="afterEnter"
+                  v-on:before-leave="beforeLeave"
+                  v-on:leave="leave"
+                  v-on:after-leave="afterLeave"
+                  appear>      
+        <div>
+          <h1>登陆</h1>
+          <div id="input">
+            <label for="user">登陆密钥</label>
+            <input type="text" id="user" v-model="userkey"><br>
+          </div>
+          <div id="check">
+            <input type="text">
+            <Sidentify :identifyCode="identifyCode"></Sidentify>
+          </div>
+          <div id="login_btn">
+            <button id="submit">登陆</button>
+            <button id="reset" @click="reset">重置</button>
+          </div>
         </div>
-      </div>
+      </transition>
     </main>
   </div>
 </template>
 
 <script>
+import Sidentify from '../components/Identify';
+
 export default {
-  name:'Login'
+  name:'Login',
+  data() {
+    return {
+      userkey:"",
+      identifyCode:""
+    }
+  },
+  methods:{
+    reset(){
+      this.userkey="";
+    },
+    beforeEnter(el){
+      el.style.opacity="0.3";
+      el.style.transform="translateY(-20px)";
+    },
+    enter(el,done){
+      el.offsetWidth;
+      el.style.transition="all 1.2s";
+      setTimeout(done,0);
+    },
+    afterEnter(el){
+      el.style.opacity="1";
+      el.style.transform="translateY(0)";
+    },
+    beforeLeave(el){
+      
+    },
+    leave(el,done){
+      
+    },
+    afterLeave(el){
+
+    }
+  },
+  components:{
+    Sidentify
+  }
 }
 </script>
 
@@ -24,7 +78,7 @@ export default {
   #login>main{
     width: 80%;
     height: 398px;
-    background: url("../assets/images/login.jpeg") no-repeat;
+    /* background: url("../assets/images/login.jpeg") no-repeat; */
     background-size: cover;
     margin: 0 auto;
     margin-top: 30px;
@@ -36,6 +90,8 @@ export default {
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
+    background: wheat;
+    border-radius: 20px;
   }
   h1{
     text-align: center;
@@ -44,18 +100,46 @@ export default {
     font-weight: bold;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   }
+  #input{
+    position: relative;
+  }
+  #input>label{
+    position: absolute;
+    font-size: 1.4em;
+    left: 4.4em;
+    top: 2ex;
+    color: lightslategrey;
+  }
+  #input>label:hover{
+    cursor: text;
+  }
   #user{
     background: none;
     outline: none;
     border: none;
     width: 80%;
-    height: 30px;
+    height: 6ex;
     box-sizing: border-box;
     padding-left: 10px;
-    background: white;
+    background: tan;
     display: block;
     margin: 0 auto;
     margin-top: 10px;
+  }
+  #check{
+    display: flex;
+    justify-content: center;
+  }
+  #check>input{
+    background: none;
+    outline: none;
+    border: none;
+    width: 30%;
+    height: 5.5ex;
+    box-sizing: border-box;
+    padding-left: 10px;
+    background: tan;
+    margin-right: 1em;
   }
   #login_btn>button{
     background: none;
@@ -70,6 +154,9 @@ export default {
   #login_btn>button:hover{
     background: #F5BD68;
     cursor: pointer;
+    box-shadow: 0 2px gray;
+    transform: translateY(-1px);
+    transition: all 0.5s;
   }
   #login_btn{
     display: flex;

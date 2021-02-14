@@ -74,6 +74,9 @@ export default {
   body{
     background: gray
   }
+  /* .main{
+    background: white;
+  } */
 }
 
 /* pc端布局方式 */
@@ -84,7 +87,6 @@ export default {
   }
   .main{
     width: 720px;
-    background: black;
     float: left;
     position: relative;
     left: 20px;
@@ -94,7 +96,6 @@ export default {
 /* pc端宽度小于等于991隐式触发移动端布局 */
 @media screen and (max-width: 991px){
   .main{
-    background: black;
     position: relative;
     overflow: hidden;
   }

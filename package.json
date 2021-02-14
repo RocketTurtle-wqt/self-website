@@ -9,8 +9,10 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.15.0",
-    "slider-verification-code": "^1.0.5",
+    "identify": "^0.1.5",
+    "mavon-editor": "^2.9.1",
     "vue": "^2.6.11",
+    "vue-meditor": "^2.1.1",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },

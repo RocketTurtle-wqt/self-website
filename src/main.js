@@ -3,10 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { Icon } from 'element-ui'
-import SliderVerificationCode from 'slider-verification-code';
-import 'slider-verification-code/lib/slider-verification-code.css';
+import mavonEditor from 'mavon-editor'
+import SIdentify from './components/Identify'
+import 'mavon-editor/dist/css/index.css'
 
-Vue.use(SliderVerificationCode);
+Vue.use(SIdentify)
+
+Vue.use(mavonEditor)
 
 Vue.use(Icon);
 
