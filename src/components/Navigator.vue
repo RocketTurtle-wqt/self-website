@@ -1,18 +1,13 @@
 <template>
   <div id="navigator">
     <div class="mypic_back">
-      <div class="mypic" ref="backimg">
+      <div class="mypic">
         <i class="el-icon-more" @click="showMenu"/>
         {{theme}}
       </div>
     </div>
-    <transition appear
-                enter-class
-                enter-active-class
-                enter-to-class 
-                leave-class
-                leave-active-class
-                leave-to-class >
+    <transition name="menu"
+                appear>
       <ul v-show="this.$store.state.showflag">
         <li v-for="(item, index) of line" :key="index" @click="selectBackground(index)" :class="item.background" >
           <span><i :class="item.icon" /></span>
@@ -89,39 +84,6 @@ export default {
     },
     showMenu(){
       this.$store.state.showflag=!this.$store.state.showflag;
-    },
-    // beforeEnter~afterLeave用于菜单栏的收起与展开
-    beforeEnter(el){
-      if(this.$store.state.documentWidth<992&&this.$store.state.showflag){
-        el.style.display="block";
-        el.style.maxHeight=0;
-      }
-    },
-    enter(el,done){
-      el.offsetWidth;
-      el.style.transition="max-height .5s";
-      setTimeout(done,0);
-    },
-    afterEnter(el){
-      if(this.$store.state.documentWidth<992&&this.$store.state.showflag){
-        el.style.maxHeight=280+'px';
-      }
-    },
-    beforeLeave(el){
-      if(this.$store.state.documentWidth<992&&!this.$store.state.showflag){
-        el.style.maxHeight=280+'px';
-      }
-    },
-    leave(el,done){
-      el.offsetWidth;
-      el.style.transition="max-height .5s";
-      setTimeout(done,0);
-    },
-    afterLeave(el){
-      if(this.$store.state.documentWidth<992&&!this.$store.state.showflag){
-        el.style.display="block"
-        el.style.maxHeight=0;
-      }
     }
   }
 }
@@ -185,10 +147,29 @@ export default {
       visibility: hidden;
     }
   }
-
+  /* 移动端布局 */
   @media screen and (max-width: 991px){
     .mypic>i{
       visibility: visible;
+    }
+
+    .menu-enter{
+      max-height: 0;
+    }
+    .menu-enter-active{
+      transition: max-height .5s;
+    }
+    .menu-enter-to{
+      max-height: 280px;
+    }
+    .menu-leave{
+      max-height: 280px;
+    }
+    .menu-leave-active{
+      transition: max-height .5s;
+    }
+    .menu-leave-to{
+      max-height: 0;
     }
   }
   /* Galaxy Fold 竖屏 280px */
