@@ -2,18 +2,17 @@
   <div id="navigator">
     <div class="mypic_back">
       <div class="mypic" ref="backimg">
-        <i class="el-icon-more" v-show="this.$store.state.showSelect" @click="showMenu"/>
+        <i class="el-icon-more" @click="showMenu"/>
         {{theme}}
       </div>
     </div>
-    <transition v-bind:css="false"
-                v-on:before-enter="beforeEnter"
-                v-on:enter="enter"
-                v-on:after-enter="afterEnter"
-                v-on:before-leave="beforeLeave"
-                v-on:leave="leave"
-                v-on:after-leave="afterLeave"
-                >
+    <transition appear
+                enter-class
+                enter-active-class
+                enter-to-class 
+                leave-class
+                leave-active-class
+                leave-to-class >
       <ul v-show="this.$store.state.showflag">
         <li v-for="(item, index) of line" :key="index" @click="selectBackground(index)" :class="item.background" >
           <span><i :class="item.icon" /></span>
@@ -163,9 +162,10 @@ export default {
       text-shadow: black 0.5px 0.5px;
       height: 141px;
       line-height: 141px;
+      position: relative;
     }
     .mypic>i{
-      position: fixed;
+      position: absolute;
       left: 30px;
       top: 54px;
       background: wheat;
@@ -178,6 +178,17 @@ export default {
       width: 100%;
       background: white;
       border-bottom: 1px solid gray;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .mypic>i{
+      visibility: hidden;
+    }
+  }
+
+  @media screen and (max-width: 991px){
+    .mypic>i{
+      visibility: visible;
     }
   }
   /* Galaxy Fold 竖屏 280px */
