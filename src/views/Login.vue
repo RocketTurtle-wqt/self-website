@@ -1,13 +1,7 @@
 <template>
   <div id="login">
     <main>
-      <transition v-bind:css="false"
-                  v-on:before-enter="beforeEnter"
-                  v-on:enter="enter"
-                  v-on:after-enter="afterEnter"
-                  v-on:before-leave="beforeLeave"
-                  v-on:leave="leave"
-                  v-on:after-leave="afterLeave"
+      <transition name="showLogin"
                   appear>      
         <div>
           <h1>登陆</h1>
@@ -43,28 +37,6 @@ export default {
   methods:{
     reset(){
       this.userkey="";
-    },
-    beforeEnter(el){
-      el.style.opacity="0.3";
-      el.style.transform="translateY(-20px)";
-    },
-    enter(el,done){
-      el.offsetWidth;
-      el.style.transition="all 1.2s";
-      setTimeout(done,0);
-    },
-    afterEnter(el){
-      el.style.opacity="1";
-      el.style.transform="translateY(0)";
-    },
-    beforeLeave(el){
-      
-    },
-    leave(el,done){
-      
-    },
-    afterLeave(el){
-
     }
   },
   components:{
@@ -161,6 +133,17 @@ export default {
   #login_btn{
     display: flex;
     justify-content: space-around;
+  }
+  .showLogin-enter{
+    opacity: 0.3;
+    transform: translateY(-20px);
+  }
+  .showLogin-enter-active{
+    transition: all 1.2s;
+  }
+  .showLogin-enter-to{
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

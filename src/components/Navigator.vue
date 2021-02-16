@@ -143,6 +143,9 @@ export default {
     }
   }
   @media screen and (min-width: 992px) {
+    #navigator>ul{
+      display: block !important;
+    }
     .mypic>i{
       visibility: hidden;
     }
@@ -172,6 +175,7 @@ export default {
       max-height: 0;
     }
   }
+  
   /* Galaxy Fold 竖屏 280px */
 
   /* @media screen and (max-width:285px){
