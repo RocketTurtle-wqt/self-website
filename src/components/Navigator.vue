@@ -155,7 +155,6 @@ export default {
     .mypic>i{
       visibility: visible;
     }
-
     .menu-enter{
       max-height: 0;
     }
