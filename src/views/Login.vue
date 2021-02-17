@@ -6,8 +6,8 @@
         <div>
           <h1>登陆</h1>
           <div id="input">
-            <label for="user">登陆密钥</label>
-            <input type="text" id="user" v-model="userkey"><br>
+            <!-- <label for="user">登陆密钥</label> -->
+            <input type="text" id="user" v-model="userkey" placeholder="登陆密钥"><br>
           </div>
           <div id="check">
             <input type="text">
@@ -75,16 +75,12 @@ export default {
   #input{
     position: relative;
   }
-  #input>label{
-    position: absolute;
-    font-size: 1.4em;
-    left: 4.4em;
-    top: 2ex;
+  /* #input>label{
     color: lightslategrey;
   }
   #input>label:hover{
     cursor: text;
-  }
+  } */
   #user{
     background: none;
     outline: none;
