@@ -86,7 +86,7 @@ export default {
     outline: none;
     border: none;
     width: 80%;
-    height: 6ex;
+    height: 37px;
     box-sizing: border-box;
     padding-left: 10px;
     background: tan;
@@ -103,7 +103,7 @@ export default {
     outline: none;
     border: none;
     width: 30%;
-    height: 5.5ex;
+    height: 37px;
     box-sizing: border-box;
     padding-left: 10px;
     background: tan;
@@ -119,13 +119,6 @@ export default {
     background: #EE9C21;
     color: white;
   }
-  #login_btn>button:hover{
-    background: #F5BD68;
-    cursor: pointer;
-    box-shadow: 0 2px gray;
-    transform: translateY(-1px);
-    transition: all 0.5s;
-  }
   #login_btn{
     display: flex;
     justify-content: space-around;
@@ -140,6 +133,15 @@ export default {
   .showLogin-enter-to{
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media screen and (min-width: 992px) {
+  #login_btn>button:hover{
+    background: #F5BD68;
+    cursor: pointer;
+    box-shadow: 0 2px gray;
+    transform: translateY(-1px);
+    transition: all 0.5s;
   }
 }
 </style>

@@ -12,6 +12,7 @@
 <script>
 import navigator from './components/Navigator.vue'
 
+
 export default {
   name: 'App',
   data() {
@@ -47,7 +48,9 @@ export default {
 </script>
 
 <style>
-@import url(./assets/css/clear.css) all;
+@import url(./assets/css/clear_pc.css) all;
+
+@import url(./assets/css/clear_mobile.css) all;
 
 @media screen{
   body{
