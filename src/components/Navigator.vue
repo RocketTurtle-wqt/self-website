@@ -47,7 +47,7 @@ export default {
           content:"分类",
           icon:"el-icon-menu",
           background:"white",
-          luyou:"/"
+          luyou:"/artical"
         },
         {
           content:"登陆",
