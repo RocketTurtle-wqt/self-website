@@ -7,18 +7,20 @@
 <script>
 import "mavon-editor/dist/css/index.css";
 
+import { server } from "../config/net.js"
+
 export default {
   name:"Artical",
   data() {
     return {
-      id:"20210228165541",
+      id:"20210312000756",
       artical:""
     }
   },
   methods:{
     getArtical(){
       this.$axios({
-        url:`http://192.168.124.7:7002/getartical`,
+        url:`${server}/getartical`,
         withCredentials:true,
         method:'GET',
         params:{
@@ -33,7 +35,7 @@ export default {
   },
   mounted(){
     this.$axios({
-      url:`http://192.168.124.7:7002/getartical`,
+      url:`${server}/getartical`,
       // withCredentials:true,
       method:'GET',
       params:{
