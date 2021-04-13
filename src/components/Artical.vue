@@ -7,41 +7,27 @@
 <script>
 import "mavon-editor/dist/css/index.css";
 
-import { server } from "../config/net.js"
+import { getArticalById } from "../config/net.js"
 
 export default {
-  name:"Artical",
+  name:'Artical',
   data() {
     return {
-      id:"20210312000756",
-      artical:""
-    }
-  },
-  methods:{
-    getArtical(){
-      this.$axios({
-        url:`${server}/getartical`,
-        withCredentials:true,
-        method:'GET',
-        params:{
-          id
-        }
-      }).then(res=>{
-        console.log(res);
-      }).catch(err=>{
-        console.error(err);
-      });
+      artical:"",
     }
   },
   mounted(){
+    const id = this.$route.params.id;
+
     this.$axios({
-      url:`${server}/getartical`,
+      url:`${getArticalById}`,
       // withCredentials:true,
       method:'GET',
       params:{
-        id:this.id
+        id
       }
     }).then(res=>{
+      // console.log(res);
       this.artical=res.data.artical;
     }).catch(err=>{
       console.error(err);
@@ -51,5 +37,5 @@ export default {
 </script>
 
 <style scoped>
-
+  
 </style>

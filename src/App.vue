@@ -1,17 +1,23 @@
 <template>
   <div id="app" ref="app">
-    <nav class="navigate">
-      <navigator></navigator>
-    </nav>
+    <main class="nav_container">
+      <nav class="navigate">
+        <Navigator></Navigator>
+      </nav>
+      <nav class="catalogue">
+        <Catalogue></Catalogue>
+      </nav>
+    </main>
     <main class="main">
-      <router-view></router-view>
+      <Show></Show>
     </main>
   </div>
 </template>
 
 <script>
-import navigator from './components/Navigator.vue'
-
+import Navigator from './components/Navigator.vue';
+import Catalogue from './components/Catalogue.vue';
+import Show from './views/Show.vue';
 
 export default {
   name: 'App',
@@ -20,7 +26,9 @@ export default {
     }
   },
   components:{
-    navigator
+    Navigator,
+    Catalogue,
+    Show
   },
   mounted(){
     this.$store.state.documentWidth=document.body.clientWidth;
@@ -68,7 +76,7 @@ export default {
     flex-flow: row wrap;
     justify-content: center;
   }
-  .navigate{
+  .nav_container{
     width: 250px;
     /* float: left; */
   }
@@ -88,7 +96,7 @@ export default {
     flex-flow: column wrap;
     justify-content: center;
   }
-  .navigate,.main{
+  .nav_container,.main{
     width: 100%;
   }
   /* .main{

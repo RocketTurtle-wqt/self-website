@@ -1,22 +1,21 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
-import Write from "../views/Write.vue"
-import Artical from "../views/Artical.vue"
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Classify from '../components/Classify.vue';
+import Artical from '../components/Artical.vue';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/login",
-    component: Login
+    path: '/homepage',
+    redirect: '/artical/20210320154440',
   },
   {
-    path: "/write",
-    component: Write
+    path: '/classify',
+    component: Classify
   },
   {
-    path: "/artical",
+    path: '/artical/:id',
     component: Artical
   }
 ]

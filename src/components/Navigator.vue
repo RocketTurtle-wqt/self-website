@@ -29,7 +29,7 @@ export default {
           content:"首页",
           icon:"el-icon-s-home",
           background:"white",
-          luyou:"/"
+          luyou:"/homepage"
         },
         {
           content:"关于",
@@ -41,19 +41,19 @@ export default {
           content:"发布",
           icon:"el-icon-collection-tag",
           background:"white",
-          luyou:"/write"
+          luyou:"/"
         },
         {
           content:"分类",
           icon:"el-icon-menu",
           background:"white",
-          luyou:"/artical"
+          luyou:"/classify"
         },
         {
           content:"登陆",
           icon:"el-icon-user",
           background:"white",
-          luyou:"/login"
+          luyou:"/"
         },
         {
           content:"图片墙",

@@ -1,5 +1,7 @@
-let server = 'http://10.8.157.62:7002';
+const server = 'http://192.168.3.28:7002';
+const getArticalById = `${server}/artical/getArticalById`;
 
 export {
-  server
+  server,
+  getArticalById
 }
