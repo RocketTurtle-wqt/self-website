@@ -2,7 +2,7 @@
   <div id="navigator">
     <div class="mypic_back">
       <div class="mypic">
-        <i class="el-icon-more" @click="showMenu"/>
+        <i class="el-icon-more" @click="changeShowflag"/>
         {{theme}}
       </div>
     </div>
@@ -19,6 +19,12 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
+
+import {
+  CHANGE_SHOWFLAG
+} from '../config/mutation-type.js'
+
 export default {
   name:'Navigator',
   data() {
@@ -82,9 +88,14 @@ export default {
       });
       this.$router.push(this.line[index].luyou);
     },
-    showMenu(){
-      this.$store.state.showflag=!this.$store.state.showflag;
-    }
+    
+    ...mapMutations([
+      CHANGE_SHOWFLAG
+    ])
+
+    // showMenu(){
+    //   this.$store.state.showflag=!this.$store.state.showflag;
+    // }
   }
 }
 </script>
