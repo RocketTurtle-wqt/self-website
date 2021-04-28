@@ -55,12 +55,12 @@ export default {
           background:"white",
           luyou:"/classify"
         },
-        {
-          content:"登陆",
-          icon:"el-icon-user",
-          background:"white",
-          luyou:"/"
-        },
+        // {
+        //   content:"登陆",
+        //   icon:"el-icon-user",
+        //   background:"white",
+        //   luyou:"/"
+        // },
         {
           content:"图片墙",
           icon:"el-icon-picture",

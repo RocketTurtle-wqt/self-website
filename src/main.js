@@ -10,7 +10,8 @@ import {
   Icon,
   Timeline,
   TimelineItem,
-  Card
+  Card,
+  Divider
 } from 'element-ui'
 
 Vue.prototype.$axios = axios;
@@ -21,6 +22,7 @@ Vue.use(Icon);
 Vue.use(Timeline);
 Vue.use(TimelineItem);
 Vue.use(Card);
+Vue.use(Divider);
 
 new Vue({
   router,
