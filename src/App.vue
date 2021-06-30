@@ -4,9 +4,9 @@
       <nav class="navigate">
         <Navigator></Navigator>
       </nav>
-      <nav class="catalogue">
+      <!-- <nav class="catalogue">
         <Catalogue></Catalogue>
-      </nav>
+      </nav> -->
     </main>
     <main class="main">
       <Show></Show>
@@ -62,7 +62,12 @@ export default {
 
 @media screen{
   body{
-    background: gray
+    /* background: gray; */
+    background: linear-gradient(90deg, #496eaa, #944fa8, #a8804f, #496eaa);
+		background-size:1400% 300%;
+		animation:mymove 2s ease infinite;
+		-webkit-animation: mymove 2s ease infinite;
+		-moz-animation: mymove 2s ease infinite;
   }
   .main{
     background: white;
@@ -75,6 +80,7 @@ export default {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    opacity: 0.8;
   }
   .nav_container{
     width: 250px;
@@ -103,5 +109,14 @@ export default {
     position: relative;
     overflow: hidden;
   } */
+}
+@keyframes mymove
+{
+    0% {
+    background-position: 0% 0%; }
+    50% {
+    background-position: 50% 100%; }
+    100% {
+      background-position: 100% 0%; }
 }
 </style>

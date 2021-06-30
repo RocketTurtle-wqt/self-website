@@ -57,7 +57,7 @@ export default {
         }
       }).then(res=>{
         this.essay=res.data
-        resolve(this.essay.classify_id);
+        resolve(this.essay.classifyId);
       }).catch(err=>{
         console.error(err);
         reject('拉取文章失败！');

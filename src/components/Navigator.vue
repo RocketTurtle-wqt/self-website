@@ -35,7 +35,7 @@ export default {
           content:"首页",
           icon:"el-icon-s-home",
           background:"white",
-          luyou:"/homepage"
+          luyou:"/"
         },
         {
           content:"关于",

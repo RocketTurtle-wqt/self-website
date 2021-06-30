@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/homepage',
+    path: '/',
     redirect: '/artical/20210320154440',
   },
   {
@@ -25,5 +25,10 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
 
 export default router

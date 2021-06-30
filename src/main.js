@@ -16,8 +16,8 @@ import {
 
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
-Vue.use(SIdentify)
-Vue.use(mavonEditor)
+Vue.use(SIdentify);
+Vue.use(mavonEditor);
 Vue.use(Icon);
 Vue.use(Timeline);
 Vue.use(TimelineItem);

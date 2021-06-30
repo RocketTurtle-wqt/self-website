@@ -26,6 +26,7 @@ export default {
       url:getClassifiesAndArticals,
       methods:'GET',
     }).then(res=>{
+      console.log(res.data);
       this.classifies=res.data;
     }).catch(err=>{
       console.log(err);
