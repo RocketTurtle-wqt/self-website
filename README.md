@@ -17,3 +17,7 @@ npm i
 ```shell
 npm run serve
 ```
+
+## 效果图
+
+![效果图](https://rocketturtlewqt.github.io/20210630101524aft.png)
